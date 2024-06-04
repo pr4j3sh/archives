@@ -1,3 +1,0 @@
-/home/prajesh/Documents/archives/src/opencv/build/CMakeFiles/rebuild_cache.dir
-/home/prajesh/Documents/archives/src/opencv/build/CMakeFiles/edit_cache.dir
-/home/prajesh/Documents/archives/src/opencv/build/CMakeFiles/DisplayImage.dir
