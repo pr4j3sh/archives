@@ -1,7 +1,23 @@
+import User from "@/models/user.model";
 import nodemailer from "nodemailer";
+import bcrypt from "bcryptjs";
 
 export async function sendMail({ email, emailType, userId }: any) {
   try {
+    const hashedToken = await bcrypt.hash(userId.toString(), 10);
+
+    if (emailType === "VERIFY") {
+      await User.findByIdAndUpdate(userId, {
+        verifyToken: hashedToken,
+        verifyTokenExpiry: Date.now() + 3600000,
+      });
+    } else if (emailType === "RESET") {
+      await User.findByIdAndUpdate(userId, {
+        forgotPasswordToken: hashedToken,
+        forgotPasswordTokenExpiry: Date.now() + 3600000,
+      });
+    }
+
     const transporter = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
@@ -16,7 +32,11 @@ export async function sendMail({ email, emailType, userId }: any) {
       to: email,
       subject:
         emailType === "VERIFY" ? "Verify your Email" : "Reset your Password",
-      html: "<b>Hello world?</b>",
+      html: `<p>Click on the link below to ${
+        emailType === "VERIFY" ? "verify your email" : "reset your password"
+      }.<br><a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">${
+        process.env.DOMAIN
+      }/verifyemail?token=${hashedToken}</a></p>`,
     };
 
     const res = await transporter.sendMail(mailOptions);
