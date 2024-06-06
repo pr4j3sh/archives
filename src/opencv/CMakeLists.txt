@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 project( opencv )
 find_package( OpenCV REQUIRED )
+
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+
 add_executable( display_image src/display_image.cpp )
 add_executable( display_images src/display_images.cpp )
 add_executable( hello_world src/hello_world.cpp )
 add_executable( show_image src/show_image.cpp )
 add_executable( play_video src/play_video.cpp )
 add_executable( video_info src/video_info.cpp )
+add_executable( video_controls src/video_controls.cpp )
+
 target_link_libraries( display_image ${OpenCV_LIBS} )
 target_link_libraries( display_images ${OpenCV_LIBS} )
 target_link_libraries( hello_world ${OpenCV_LIBS} )
 target_link_libraries( show_image ${OpenCV_LIBS} )
 target_link_libraries( play_video ${OpenCV_LIBS} )
 target_link_libraries( video_info ${OpenCV_LIBS} )
+target_link_libraries( video_controls ${OpenCV_LIBS} )

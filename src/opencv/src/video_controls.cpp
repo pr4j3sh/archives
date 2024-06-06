@@ -27,6 +27,8 @@ int main(int argc,char* argv[]){
             std::cout<<"Video ended"<<std::endl;
             break;
         };
+        int current_pos = vid.get(CAP_PROP_POS_FRAMES);
+        setTrackbarPos("tracker", "video", current_pos);
         imshow("video",frame);
         if(waitKey(33)>=0) {
             std::cout<<"Video closed!"<<std::endl;
