@@ -1,6 +1,7 @@
 const calc = require("./src/calc");
 const server = require("./src/webServer");
 const writeToFile = require("./src/writeToFile");
+const debug = require("./src/debug");
 
 function runServer() {
   const hostname = process.env.HOSTNAME;
@@ -20,6 +21,11 @@ function runWrite() {
   writeToFile("exports.json");
 }
 
+function runDebug() {
+  debug();
+}
+
 // runServer();
 // runCalc();
-runWrite();
+// runWrite();
+runDebug();
