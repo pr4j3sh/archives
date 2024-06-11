@@ -2,6 +2,7 @@ const calc = require("./src/calc");
 const server = require("./src/webServer");
 const writeToFile = require("./src/writeToFile");
 const debug = require("./src/debug");
+const supportsColor = require("./src/supportsColor");
 
 function runServer() {
   const hostname = process.env.HOSTNAME;
@@ -18,14 +19,19 @@ function runCalc() {
 }
 
 function runWrite() {
-  writeToFile("exports.json");
+  writeToFile(exports ,"exports.json");
 }
 
 function runDebug() {
   debug();
 }
 
+function runSupportsColor(){
+    supportsColor();
+}
+
 // runServer();
 // runCalc();
-// runWrite();
-runDebug();
+//runWrite();
+//runDebug();
+runSupportsColor();

@@ -1,10 +1,10 @@
 const fs = require("node:fs");
 const config = require("../config");
 
-const content = JSON.stringify(exports);
 
-function writeToFile(fileName) {
+function writeToFile(data, fileName) {
   try {
+    const content = JSON.stringify(data);
     fs.writeFileSync(config.baseDir + "/data/" + fileName, content);
     console.log(`${fileName} file written`);
   } catch (err) {
