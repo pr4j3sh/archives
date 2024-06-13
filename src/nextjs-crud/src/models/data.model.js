@@ -8,7 +8,7 @@ const dataSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const Data = mongoose.models.data || mongoose.model("data", dataSchema);
