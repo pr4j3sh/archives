@@ -8,7 +8,6 @@ function supportsColor(){
     //writeToFile(process,"node_process.json")
     //writeToFile(os,"os.json")
     //writeToFile(tty,"tty.json")
-    :q
 }
 
 module.exports = supportsColor
