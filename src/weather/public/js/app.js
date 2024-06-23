@@ -40,6 +40,7 @@ async function getLocation(key, loc) {
 
 async function getWeather(event) {
   if (event) event.preventDefault();
+  
   const loc = document.placeForm.loc.value || "london";
   const key = "45b11607ce8aa9c3a54c0a355e420441";
 
@@ -47,6 +48,7 @@ async function getWeather(event) {
     const coord = await getLocation(key, loc);
     const lat = coord.lat;
     const lon = coord.lon;
+
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -74,8 +76,11 @@ async function getWeather(event) {
     description.classList.remove("placeholder")
     windSpeed.innerHTML = data.wind.speed;
     windSpeed.classList.remove("placeholder")
+
     document.getElementById("locationInput").value = "";
+
   } catch (error) {
+
     document.getElementById("locationInput").value = "";
     alert(error.message);
     console.log(error.message);

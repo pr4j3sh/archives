@@ -34,4 +34,12 @@ function runSupportsColor(){
 // runCalc();
 //runWrite();
 //runDebug();
-runSupportsColor();
+// runSupportsColor();
+
+
+
+// statement 1
+
+// promise 1
+
+// statement 2
