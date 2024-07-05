@@ -1,4 +1,4 @@
-const moment = require("moment")
+const moment = require("moment");
 
-console.log("hello js");  
-console.log(moment().startOf('day').fromNow());
+console.log("hello js");
+console.log(moment().startOf("day").fromNow());
