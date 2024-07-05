@@ -9,13 +9,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\nconsole.log(\"hello js\");\nconsole.log(moment().startOf('day').fromNow());\n\n//# sourceURL=webpack://frontend/./src/index.js?");
+eval("var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\nconsole.log(\"hello js\");\nconsole.log(moment().startOf('day').fromNow());\n\n//# sourceURL=webpack://frontend/./src/js/app.js?");
 
 /***/ }),
 
@@ -1458,7 +1458,7 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\n//! mome
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/app.js");
 /******/ 	
 /******/ })()
 ;
