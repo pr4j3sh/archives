@@ -1,0 +1,36 @@
+{
+  "id": "/home/prajesh/Documents/archives/src/nodejs/src/writeToFile.js",
+  "path": "/home/prajesh/Documents/archives/src/nodejs/src",
+  "exports": {},
+  "filename": "/home/prajesh/Documents/archives/src/nodejs/src/writeToFile.js",
+  "loaded": false,
+  "children": [
+    {
+      "id": "/home/prajesh/Documents/archives/src/nodejs/config.js",
+      "path": "/home/prajesh/Documents/archives/src/nodejs",
+      "exports": { "baseDir": "/home/prajesh/Documents/archives/src/nodejs" },
+      "filename": "/home/prajesh/Documents/archives/src/nodejs/config.js",
+      "loaded": true,
+      "children": [],
+      "paths": [
+        "/home/prajesh/Documents/archives/src/nodejs/node_modules",
+        "/home/prajesh/Documents/archives/src/node_modules",
+        "/home/prajesh/Documents/archives/node_modules",
+        "/home/prajesh/Documents/node_modules",
+        "/home/prajesh/node_modules",
+        "/home/node_modules",
+        "/node_modules"
+      ]
+    }
+  ],
+  "paths": [
+    "/home/prajesh/Documents/archives/src/nodejs/src/node_modules",
+    "/home/prajesh/Documents/archives/src/nodejs/node_modules",
+    "/home/prajesh/Documents/archives/src/node_modules",
+    "/home/prajesh/Documents/archives/node_modules",
+    "/home/prajesh/Documents/node_modules",
+    "/home/prajesh/node_modules",
+    "/home/node_modules",
+    "/node_modules"
+  ]
+}
