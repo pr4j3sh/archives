@@ -16,34 +16,48 @@ let links = [
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hackernews Clone`,
-    feed: () => links,
-    link: (parent, args) => {
-      const link = links.find((link) => link.id === args.id);
-      return link;
+    feed: async (parent, args, context) => {
+      return context.prisma.link.findMany();
+    },
+    link: async (parent, args, context) => {
+      return context.prisma.link.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
     },
   },
   Mutation: {
-    post: (parent, args) => {
-      const link = {
-        id: uuid(),
-        description: args.description,
-        url: args.url,
-      };
-      links.push(link);
+    post: (parent, args, context, info) => {
+      const link = context.prisma.link.create({
+        data: {
+          description: args.description,
+          url: args.url,
+        },
+      });
+
       return link;
     },
-    updateLink: (parent, args) => {
-      const link = links.find((link) => link.id === args.id);
-      if (link) {
-        link.url = args.url;
-        link.description = args.description;
-      }
+    updateLink: (parent, args, context, info) => {
+      const link = context.prisma.link.update({
+        where: {
+          id: args.id,
+        },
+        data: {
+          url: args.url,
+          description: args.description,
+        },
+      });
+
       return link;
     },
-    deleteLink: (parent, args) => {
-      const link = links.find((link) => link.id === args.id);
-      const idx = links.indexOf(link);
-      links.splice(idx, 1);
+    deleteLink: (parent, args, context, info) => {
+      const link = context.prisma.link.delete({
+        where: {
+          id: args.id,
+        },
+      });
+
       return link;
     },
   },
