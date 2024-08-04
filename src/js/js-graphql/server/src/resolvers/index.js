@@ -1,50 +1,16 @@
+const { info, feed, link } = require("./query");
+const { post, updateLink, deleteLink } = require("./mutation");
+
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`,
-    feed: async (parent, args, context) => {
-      return context.prisma.link.findMany();
-    },
-    link: async (parent, args, context) => {
-      return context.prisma.link.findUnique({
-        where: {
-          id: args.id,
-        },
-      });
-    },
+    info,
+    feed,
+    link,
   },
   Mutation: {
-    post: (parent, args, context, info) => {
-      const link = context.prisma.link.create({
-        data: {
-          description: args.description,
-          url: args.url,
-        },
-      });
-
-      return link;
-    },
-    updateLink: (parent, args, context, info) => {
-      const link = context.prisma.link.update({
-        where: {
-          id: args.id,
-        },
-        data: {
-          url: args.url,
-          description: args.description,
-        },
-      });
-
-      return link;
-    },
-    deleteLink: (parent, args, context, info) => {
-      const link = context.prisma.link.delete({
-        where: {
-          id: args.id,
-        },
-      });
-
-      return link;
-    },
+    post,
+    updateLink,
+    deleteLink,
   },
   Link: {
     id: (link) => link.id,

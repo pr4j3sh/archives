@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch ."
+    "dev": "node --env-file=.env --watch ."
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,9 @@
   "dependencies": {
     "@prisma/client": "^5.17.0",
     "apollo-server": "^2.26.2",
+    "bcryptjs": "^2.4.3",
     "graphql": "^14.7.0",
+    "jsonwebtoken": "^9.0.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
