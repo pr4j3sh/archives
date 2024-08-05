@@ -1,22 +1,13 @@
-const { info, feed, link } = require("./query");
-const { post, updateLink, deleteLink } = require("./mutation");
+const Query = require("./query");
+const Mutation = require("./mutation");
+const User = require("./user");
+const Link = require("./link");
 
 const resolvers = {
-  Query: {
-    info,
-    feed,
-    link,
-  },
-  Mutation: {
-    post,
-    updateLink,
-    deleteLink,
-  },
-  Link: {
-    id: (link) => link.id,
-    description: (link) => link.description,
-    url: (link) => link.url,
-  },
+  Query,
+  Mutation,
+  User,
+  Link,
 };
 
 module.exports = resolvers;
