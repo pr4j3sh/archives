@@ -1,0 +1,30 @@
+.carousel {
+  /*display: flex;*/
+  /*gap: 1rem;*/
+}
+.box {
+  width: 1080px;
+  height: 400px;
+}
+
+.one {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  background-color: red;
+}
+.two {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: blue;
+}
+.three {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+  background-color: yellow;
+}
