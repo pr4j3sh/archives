@@ -1,57 +1,43 @@
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { createRef, useRef, useState, useEffect } from "react";
-import { Button, Image, StyleSheet, Text, Pressable, View } from "react-native";
+import { createRef, useRef, useState } from "react";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  ToastAndroid,
+} from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import * as MediaLibrary from "expo-media-library";
+import { usePermissions, saveToLibraryAsync } from "expo-media-library";
 import { captureRef } from "react-native-view-shot";
-import * as Location from "expo-location";
+import {
+  getCurrentPositionAsync,
+  useForegroundPermissions,
+} from "expo-location";
 
 export default function App() {
   const [facing, setFacing] = useState("back");
   const [cameraReady, setCameraReady] = useState(false);
   const [currentPicture, setCurrentPicture] = useState("");
   const [cameraPermission, requestCameraPermission] = useCameraPermissions();
+  const [storagePermission, requestStoragePermission] = usePermissions();
+  const [locationPermission, requestLocationPermission] =
+    useForegroundPermissions();
   const camera = createRef();
   const imageRef = useRef();
-  const [storagePermission, requestStoragePermission] =
-    MediaLibrary.usePermissions();
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
+  if (!cameraPermission) {
+    requestCameraPermission();
+  }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  if (storagePermission === null) {
+  if (!storagePermission) {
     requestStoragePermission();
   }
 
-  if (!cameraPermission) {
-    return <View />;
-  }
-
-  if (!cameraPermission.granted) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.message}>
-          We need your permission to show the camera
-        </Text>
-        <Button onPress={requestCameraPermission} title="grant permission" />
-      </View>
-    );
-  }
-
-  if (errorMsg) {
-    alert(errorMsg);
+  if (!locationPermission) {
+    requestLocationPermission();
   }
 
   function toggleCameraFacing() {
@@ -63,9 +49,15 @@ export default function App() {
   }
 
   async function handleCapture() {
-    if (cameraReady && camera) {
-      const res = await camera.current.takePictureAsync();
-      setCurrentPicture(res);
+    try {
+      if (cameraReady && camera) {
+        const res = await camera.current.takePictureAsync();
+        setCurrentPicture(res);
+        const location = await getCurrentPositionAsync();
+        setLocation(location);
+      }
+    } catch (error) {
+      alert("Error", error);
     }
   }
 
@@ -80,12 +72,12 @@ export default function App() {
         quality: 1,
       });
 
-      await MediaLibrary.saveToLibraryAsync(localUri);
+      await saveToLibraryAsync(localUri);
       if (localUri) {
-        alert("Saved!");
+        ToastAndroid.show("Saved to gallery", ToastAndroid.SHORT);
       }
-    } catch (e) {
-      alert(e);
+    } catch (error) {
+      alert("Error", error);
     }
   }
 
@@ -101,10 +93,10 @@ export default function App() {
         >
           <View style={styles.buttonContainer}>
             <Pressable style={styles.button} onPress={toggleCameraFacing}>
-              <FontAwesome6 name="camera-rotate" size={24} color="#fff" />
+              <FontAwesome6 name="camera-rotate" size={24} color="#000" />
             </Pressable>
             <Pressable style={styles.button} onPress={handleCapture}>
-              <FontAwesome6 name="camera" size={24} color="#fff" />
+              <FontAwesome6 name="camera" size={24} color="#000" />
             </Pressable>
           </View>
         </CameraView>
@@ -121,10 +113,10 @@ export default function App() {
           </View>
           <View style={styles.buttonContainer}>
             <Pressable style={styles.button} onPress={handleDelete}>
-              <FontAwesome6 name="trash-can" size={24} color="black" />
+              <FontAwesome6 name="trash" size={24} color="black" />
             </Pressable>
             <Pressable style={styles.button} onPress={handleSave}>
-              <FontAwesome6 name="save" size={24} color="black" />
+              <FontAwesome6 name="download" size={24} color="black" />
             </Pressable>
           </View>
         </>
