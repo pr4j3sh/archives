@@ -11,7 +11,7 @@ const express = require("express");
 const router = express.Router();
 
 router.route("/signup").post(signUp);
-router.route("/signin").get(signIn);
+router.route("/signin").post(signIn);
 router.route("/user/:id").get(getUser).put(updateUser).delete(deleteUser);
 
 module.exports = router;
