@@ -8,9 +8,7 @@ const server = express();
 server.use(express.json());
 
 server.get("/", (req, res) => {
-  res
-    .status(200)
-    .json({ message: `server running @ http://${hostname}:${port}` });
+  res.status(200).json({ message: "online" });
 });
 
 server.post("/", async (req, res) => {
