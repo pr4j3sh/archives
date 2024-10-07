@@ -5,9 +5,9 @@ LDFLAGS = -lcpprest -lssl -lcrypto -lpthread
 SRC_DIR = .
 BUILD_DIR = build
 
-SOURCES = $(SRC_DIR)/main.cpp
-OBJECTS = $(BUILD_DIR)/main.o
-EXECUTABLE = $(BUILD_DIR)/main
+SOURCES = $(SRC_DIR)/server.cpp
+OBJECTS = $(BUILD_DIR)/server.o
+EXECUTABLE = $(BUILD_DIR)/server
 
 $(shell mkdir -p $(BUILD_DIR))
 

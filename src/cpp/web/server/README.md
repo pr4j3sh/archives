@@ -24,7 +24,7 @@ This is a simple REST API server built using `cpprestsdk`. It allows basic CRUD 
 
 2. Run the server:
    ```bash
-   ./build/main
+   ./build/server
    ```
 
 ## API Endpoints
