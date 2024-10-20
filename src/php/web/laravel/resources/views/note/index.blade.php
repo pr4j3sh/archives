@@ -16,7 +16,10 @@
                         <a href="{{ route('note.edit', $note) }}" class="note-edit-btn">
                             Edit
                         </a>
-                        <button class="note-delete-button">Delete</button>
+                        <form action="{{ route('note.destroy', $note) method="POST" }}">
+                            @csrf
+                            @method("DELETE")
+                        </form>
                     </div>
                 </div>
             @endforeach
