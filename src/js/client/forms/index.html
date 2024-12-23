@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <div id="app" class="container">
+      <div id="navbar"></div>
+      <main>
+        <article>
+          <b>Form</b>
+          <p>Just a form.</p>
+        </article>
+        <form method="post" name="loginForm">
+          <input type="text" name="name" placeholder="Your name" />
+          <small id="nameText"></small>
+          <input type="email" name="email" placeholder="email@example.com" />
+          <small id="emailText"></small>
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Your password"
+            />
+            <small id="passwordText"></small>
+            <div>
+              <small id="passwordButton" class="text-gray-500"
+                >Show password</small
+              >
+            </div>
+          </div>
+          <input type="url" name="url" placeholder="https://www.example.com" />
+          <small id="urlText"></small>
+          <button>Submit</button>
+        </form>
+      </main>
+      <div id="footer"></div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
