@@ -1,16 +1,21 @@
 {
-  "name": "container",
+  "name": "express",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env ."
+    "test": "echo \"Running tests..\" && exit 1",
+    "start": "node --env-file=.env .",
+    "dev": "nodemon --env-file=.env ."
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
+  "license": "MIT",
+  "description": "express server template for creating apis without the hassle",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
   "dependencies": {
+    "exhandlers": "^1.0.9",
     "express": "^4.21.1"
   }
 }
