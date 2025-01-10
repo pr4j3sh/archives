@@ -1,5 +1,5 @@
 {
-  "name": "redis",
+  "name": "postgres",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "redis": "^4.7.0"
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
