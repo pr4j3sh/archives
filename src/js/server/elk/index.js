@@ -15,16 +15,14 @@ const origins = process.env.ORIGINS;
 
 const server = express();
 const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.json(),
   transports: [
     new winston.transports.Console({
       format: winston.format.simple(),
     }),
     new LogstashTransport({
-      port: 5005,
-      node_name: "eks",
-      host: hostname,
+      port: 5044,
+      node_name: "elk",
+      host: `${hostname}`,
     }),
   ],
 });
