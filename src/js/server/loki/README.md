@@ -4,6 +4,10 @@ This is an express js template, pre-integrated with Loki, Promtail and Grafana, 
 
 ## Usage
 
+```bash
+cp .env.example .env
+```
+
 - Run loki
 
 ```bash
