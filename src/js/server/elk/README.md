@@ -13,7 +13,7 @@ docker network create elastic
 - Run Elasticsearch
 
 ```bash
-docker run --name elasticsearch -e "discovery.type=single-node" --network elastic -m 1GB -p 9200:9200 docker.elastic.co/elasticsearch/elasticsearch:8.17.0
+docker run -d --name elasticsearch -e "discovery.type=single-node" --network elastic -m 1GB -p 9200:9200 docker.elastic.co/elasticsearch/elasticsearch:8.17.0
 ```
 
 - Get the user password
@@ -54,7 +54,7 @@ output {
 - Run Logstash
 
 ```bash
-docker run --name logstash -v ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf --network elastic -p 5044:5044 docker.elastic.co/logstash/logstash:8.17.0
+docker run -d --name logstash -v ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf --network elastic -p 5044:5044 docker.elastic.co/logstash/logstash:8.17.0
 ```
 
 - Start server using `dev`
@@ -79,13 +79,13 @@ elasticsearch.serviceAccountToken: "<token>"
 ```
 
 ```bash
-docker run --name kibana -v ./kibana.yml:/usr/share/kibana/config/kibana.yml --network elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.17.0
+docker run -d --name kibana -v ./kibana.yml:/usr/share/kibana/config/kibana.yml --network elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.17.0
 ```
 
 > Go to [http://localhost:5601](http://localhost:5601)
 
-`Home` > `Management` > `Stack Management` > `Kibana` > `Data Views`
-`Home` > `Discover`
+- `Home` > `Management` > `Stack Management` > `Kibana` > `Data Views`
+- `Home` > `Discover`
 
 ## References
 
