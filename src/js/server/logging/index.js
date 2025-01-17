@@ -17,9 +17,20 @@ const server = express();
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({
-      format: winston.format.simple(),
+      format: winston.format.combine(
+        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+        winston.format.printf(({ timestamp, level, message }) => {
+          return `${timestamp} ${level.toUpperCase()}: ${message}`;
+        }),
+      ),
     }),
-    new winston.transports.File({ filename: "logs/server.log" }),
+    new winston.transports.File({
+      filename: "logs/server.log",
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json(),
+      ),
+    }),
   ],
 });
 
