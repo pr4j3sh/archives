@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const { stream, logger } = require("./lib/utils.js");
+const { stream, logger, db } = require("./lib/utils.js");
 const port = 5000;
 const hostname = "127.0.0.1";
 
@@ -23,6 +23,8 @@ server.get("/", async (req, res) => {
 });
 
 server.use("/api", require("./routes.js"));
+
+db("mongodb://127.0.0.1:27017/tasker");
 
 server.listen(port, hostname, () => {
   logger.info(`server running @ http://${hostname}:${port}`);
