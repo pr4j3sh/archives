@@ -1,0 +1,35 @@
+Stopwatch {
+    background: $boost;
+    margin: 1;
+    padding: 1;
+}
+
+TimeDisplay {
+    text-align: center;
+    color: $foreground-muted;
+    margin-bottom: 1;
+}
+
+ButtonGroup {
+    align-horizontal: center;
+}
+
+#stop{
+  display: none;
+}
+
+.started {
+    color: $text;
+}
+
+.started #start{
+    display: none;
+}
+
+.started #stop{
+    display: block;
+}
+
+.started TimeDisplay {
+    color: $foreground;
+}
