@@ -68,6 +68,10 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
+    const token = req.headers["authorization"].split(" ")[1];
+
+    const payload = await jwt.decode(token);
+
     res.status(200).json({ message: "logged out" });
   } catch (error) {
     logger.error(error.message);

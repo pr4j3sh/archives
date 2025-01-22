@@ -1,5 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const winston = require("winston");
+const { exit } = require("process");
 
 const logger = winston.createLogger({
   level: "info",
@@ -20,6 +21,7 @@ const db = async (uri) => {
     logger.info("connected to mongodb");
   } catch (error) {
     logger.error(error.message);
+    exit(1);
   }
 };
 
