@@ -1,4 +1,4 @@
-const { logger, secret } = require("./lib/utils");
+const { logger, secret, client } = require("./lib/utils");
 const jwt = require("jsonwebtoken");
 
 const authenticate = async (req, res, next) => {
@@ -16,15 +16,22 @@ const authenticate = async (req, res, next) => {
       });
     }
 
-    try {
-      const user = await jwt.verify(token, secret);
-      req.user = user;
-      next();
-    } catch (error) {
-      return res.status(403).json({
-        message: "invalid token",
+    const cache = await client.get(`token:${token}`);
+    if (cache) {
+      return res.status(401).json({
+        message: "token revoked",
       });
     }
+
+    jwt.verify(token, secret, (err, payload) => {
+      if (err) {
+        return res.status(403).json({
+          message: "invalid token",
+        });
+      }
+      req.user = payload;
+      next();
+    });
   } catch (error) {
     logger.error(error.message);
     res.status(401).json({

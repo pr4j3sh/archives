@@ -1,4 +1,4 @@
-const { logger, secret } = require("./lib/utils");
+const { logger, secret, client } = require("./lib/utils");
 const User = require("./models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -53,7 +53,7 @@ const login = async (req, res) => {
     }
 
     const token = await jwt.sign({ id: user._id, email }, secret, {
-      expiresIn: "1h",
+      expiresIn: "15m",
     });
 
     res.status(200).json({
@@ -71,6 +71,10 @@ const logout = async (req, res) => {
     const token = req.headers["authorization"].split(" ")[1];
 
     const payload = await jwt.decode(token);
+
+    const ttl = payload.exp * 1000 - Date.now();
+
+    await client.set(`token:${token}`, token, { EX: ttl });
 
     res.status(200).json({ message: "logged out" });
   } catch (error) {

@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const { createClient } = require("redis");
 const winston = require("winston");
 const { exit } = require("process");
 
@@ -25,11 +26,22 @@ const db = async (uri) => {
   }
 };
 
+const client = createClient({ url: "redis://127.0.0.1:6379" })
+  .connect()
+  .then(() => {
+    logger.info("connected to redis");
+  })
+  .catch((error) => {
+    logger.error(error.message);
+    exit(1);
+  });
+
 const secret = "secret";
 
 module.exports = {
   logger,
   stream,
   db,
+  client,
   secret,
 };
