@@ -135,23 +135,24 @@ const createTask = async (req, res) => {
 const updateTask = async (req, res) => {
   try {
     const id = req.params.id;
-    const { title, description, priority, isPending } = req.body;
+    const payload = req.body;
 
-    const task = await Task.findOne({ _id: id });
+    const updatedTask = await Task.findByIdAndUpdate(
+      id,
+      { $set: payload },
+      { new: true },
+    );
+    if (!updatedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
 
-    if (title) task.title = title;
-    if (description) task.description = description;
-    if (priority) task.priority = priority;
-    if (isPending !== undefined) task.isPending = isPending;
-
-    await task.save();
-
-    res.status(204);
+    res.status(204).send();
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ message: error.message });
   }
 };
+
 const deleteTask = async (req, res) => {
   try {
     const id = req.params.id;
