@@ -1,20 +1,26 @@
 import "./style.css";
 import { io } from "socket.io-client";
 
-let players = [];
 const socket = io("http://localhost:5000");
 
-const p = document.querySelector("p");
+let player = "";
+const pScore = document.querySelector(".score");
+const pPlayer = document.querySelector(".player");
 const btn = document.querySelector("button");
 const ul = document.querySelector("ul");
 
 btn.addEventListener("click", () => {
-  let score = Number(p.textContent);
-  p.innerText = (score + 1).toString();
+  let score = Number(pScore.textContent) + 1;
+  pScore.innerText = score.toString();
+  socket.emit("score", JSON.stringify({ player, score }));
 });
 
-function setPlayers(player) {
-  players.push(player);
+socket.on("player", (res) => {
+  player = res;
+  pPlayer.innerText = res;
+});
+
+function setPlayers(players) {
   const list = players
     .map((player) => {
       return `<li>${player}</li>`;
@@ -23,7 +29,6 @@ function setPlayers(player) {
   ul.innerHTML = list;
 }
 
-socket.on("player", (res) => {
-  console.log(res);
+socket.on("players", (res) => {
   setPlayers(res);
 });
