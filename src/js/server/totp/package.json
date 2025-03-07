@@ -1,0 +1,22 @@
+{
+  "name": "totp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "otpauth": "^9.3.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "qrcode": "^1.5.4"
+  }
+}
