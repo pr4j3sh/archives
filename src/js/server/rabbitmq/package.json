@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "sen": "node send.js",
+    "rec": "node recieve.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
