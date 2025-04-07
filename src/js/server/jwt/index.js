@@ -11,6 +11,9 @@ console.log({ message: "current vars", payload, secret });
 const token = jwt.sign(payload, secret);
 console.log({ token });
 
+const decoded = jwt.decode(token);
+console.log({ decoded });
+
 jwt.verify(token, secret, (err, decoded) => {
   if (err) {
     console.error(err);
