@@ -11,7 +11,7 @@ const worker = new Worker(
     try {
       const { email } = job.data;
       const data = await resend.emails.send({
-        from: "prajesh.eleven118@gmail.com",
+        from: "onboarding@resend.dev",
         to: [`${email}`],
         subject: "Verify your email, mate",
         html: "This is your chance to verify your email!!",
