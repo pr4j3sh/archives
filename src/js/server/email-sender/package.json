@@ -1,0 +1,22 @@
+{
+  "name": "email-sender",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server.js",
+    "work": "nodemon --env_file=.env worker.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "bullmq": "^5.51.0",
+    "express": "^5.1.0",
+    "ioredis": "^5.6.1",
+    "resend": "^4.4.1"
+  }
+}
