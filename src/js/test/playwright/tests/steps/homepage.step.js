@@ -65,6 +65,16 @@ Then("It should Display correct Product lists in left Nav", async function () {
   expect(productArray).toEqual(expect.arrayContaining(["Live", "App Live"]));
 });
 
+Given("Browser is opened", async () => {});
+
+When("User navigates to pr4j3sh Website Homepage", async function () {
+  await page.goto("https://pr4j3sh.github.io/pr4j3sh/");
+});
+
+Then("It should have 4j3 in title", async function () {
+  await expect(page).toHaveTitle(/4j3/);
+});
+
 After(async function () {
   await browser.close();
 });

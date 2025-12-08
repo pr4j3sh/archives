@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 386510760
+              "duration": 296033384
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1540652432
+              "duration": 805973938
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 171652078
+              "duration": 184733946
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33661391
+              "duration": 11522228
             }
           },
           {
@@ -61,7 +61,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62726607
+              "duration": 74335006
             }
           }
         ],
@@ -80,7 +80,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 254014752
+              "duration": 274031829
             }
           },
           {
@@ -93,7 +93,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1555163402
+              "duration": 1211094898
             }
           },
           {
@@ -106,7 +106,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2306184075
+              "duration": 1846278018
             }
           },
           {
@@ -119,7 +119,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 309853682
+              "duration": 861038947
             }
           },
           {
@@ -127,7 +127,73 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 75982433
+              "duration": 67759188
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "homepage-functionality;verify-page-title",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Verify Page Title",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 257044909
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 21,
+            "name": "Browser is opened",
+            "match": {
+              "location": "tests/steps/homepage.step.js:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1431725586
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "User navigates to pr4j3sh Website Homepage",
+            "match": {
+              "location": "tests/steps/homepage.step.js:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23180742
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "It should have 4j3 in title",
+            "match": {
+              "location": "tests/steps/homepage.step.js:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25740546
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52582583
             }
           }
         ],

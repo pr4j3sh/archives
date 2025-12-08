@@ -15,3 +15,11 @@ Feature: Homepage Functionality
         When User clicks on Pricing Menu
 
         Then It should Display correct Product lists in left Nav
+
+    Scenario: Verify Page Title
+      
+        Given Browser is opened
+
+        When User navigates to pr4j3sh Website Homepage
+
+        Then It should have 4j3 in title
