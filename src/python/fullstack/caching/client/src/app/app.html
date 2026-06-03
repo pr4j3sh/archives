@@ -1,0 +1,9 @@
+<main>
+@if(response.hasValue()) {
+  <p>{{response.value().message}}</p>
+} @else if (response.error()) {
+  <div>Could not load response</div>
+} @else if (response.isLoading()) {
+  <div>Loading response...</div>
+}
+</main>
