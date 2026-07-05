@@ -1,3 +1,7 @@
+# bootloader
+
+experimenting and writing a bootloader to know how it works
+
 - compile
 
 ```bash
