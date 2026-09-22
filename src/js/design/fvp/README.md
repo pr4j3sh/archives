@@ -192,3 +192,8 @@ Hence we use something known as heavy hitter algorithms
 - Heavy hitters algorithm
 
 Now, we have got something new to study
+
+- Misra-gries
+- Space saving
+- count-min sketch
+- lossy counting
