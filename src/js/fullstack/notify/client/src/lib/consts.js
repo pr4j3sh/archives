@@ -11,6 +11,6 @@ export const AUTHOR = {
   USERNAME: "pr4j3sh",
   EMAIL: "prajesh.eleven118@gmail.com",
   URL: "https://pr4j3sh.github.io/pr4j3sh/",
-  CHAT: "https://pr4j3sh.github.io/chat/",
+  CHAT: "https://chatw4j3.vercel.app/",
   GITHUB: "https://github.com/pr4j3sh",
 };
